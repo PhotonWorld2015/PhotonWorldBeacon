@@ -90,29 +90,29 @@
     
     [self copyFileFromBundle:nil];
     
-    [self writeErrorLog:@"\n 1"];
+    //[self writeErrorLog:@"\n 1"];
     [self registerNotifications];
-    [self writeErrorLog:@"\n 2"];
+    //[self writeErrorLog:@"\n 2"];
     
     [Gimbal setAPIKey:@"d1c5ea32-a1ee-405b-9bd8-88255ea574cc" options:nil];
-    [self writeErrorLog:@"\n 3"];
+    //[self writeErrorLog:@"\n 3"];
     
     self.beaconManager = [GMBLBeaconManager new];
     [self.beaconManager startListening];
     self.beaconManager.delegate = self;
-    [self writeErrorLog:@"\n 4"];
+    //[self writeErrorLog:@"\n 4"];
     
     self.placeManager = [GMBLPlaceManager new];
     self.placeManager.delegate = self;
-    [self writeErrorLog:@"\n 5"];
+    //[self writeErrorLog:@"\n 5"];
     
     self.communicationManager = [GMBLCommunicationManager new];
     self.communicationManager.delegate = self;
-    [self writeErrorLog:@"\n 6"];
+    //[self writeErrorLog:@"\n 6"];
     
     [GMBLPlaceManager startMonitoring];
     [GMBLCommunicationManager startReceivingCommunications];
-    [self writeErrorLog:@"\n 7"];
+    //[self writeErrorLog:@"\n 7"];
     
     //[self checkBluetoothStatus];
     //[self checkLocationServiceStatus];
@@ -122,8 +122,6 @@
 
 - (void) registerNotifications{
     
-    [self writeErrorLog:@"\n 1.1"];
-
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
     {
         UIUserNotificationType types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
@@ -134,13 +132,11 @@
     {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
     }
-    [self writeErrorLog:@"\n 1.2"];
 
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound
                                                                                                               categories:nil]];
     }
-    [self writeErrorLog:@"\n 1.3"];
 }
 
 - (void) checkBluetoothStatus{
